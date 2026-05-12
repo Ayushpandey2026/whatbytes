@@ -9,76 +9,54 @@ export default function Header({ searchQuery, setSearchQuery }) {
   const { cartCount } = useCart();
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-700 to-blue-900 shadow-lg border-b border-blue-600 border-opacity-30 mb-12">
-      <div
-        className="max-w-7xl mx-auto px-8"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "16px",
-          minHeight: "72px",
-          paddingTop: "14px",
-          paddingBottom: "14px",
-        }}
-      >
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-700 to-blue-900 shadow-lg border-b border-blue-600/30">
+      <div className="w-full max-w-screen-2xl mx-auto px-6 lg:px-10 min-h-[110px] flex flex-wrap md:flex-nowrap items-center justify-between gap-6">
+
         {/* Logo */}
         <Link
           href="/"
-          style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}
-          className="text-white hover:opacity-90 transition"
+          className="text-white hover:opacity-90 transition flex items-center gap-3 flex-shrink-0"
         >
-          <Store size={28} style={{ flexShrink: 0 }} />
-          <span style={{ fontSize: "1.25rem", fontWeight: 700, letterSpacing: "-0.3px", whiteSpace: "nowrap" }}>
+          <Store size={34} />
+          <span className="text-2xl font-bold whitespace-nowrap tracking-tight">
             Whatbytes Store
           </span>
         </Link>
 
-        {/* Search Bar - grows in middle */}
-        <div style={{ flex: "1 1 280px", maxWidth: "480px", margin: "0 0 0 0" }}>
-          <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        {/* Search */}
+        <div className="flex-1 min-w-[280px] max-w-[750px] h-[60px]">
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
         </div>
 
         {/* Actions */}
-        <div style={{ display: "flex", alignItems: "center", gap: "20px", flexShrink: 0 }}>
-          <Link href="/cart" className="relative text-white hover:opacity-80 transition group">
-            <ShoppingCart size={26} className="group-hover:scale-110 transition" />
-            {cartCount > 0 && (
-              <span
-                style={{
-                  position: "absolute",
-                  top: "-8px",
-                  right: "-10px",
-                  background: "#ef4444",
-                  color: "#fff",
-                  fontSize: "0.7rem",
-                  fontWeight: 700,
-                  borderRadius: "9999px",
-                  height: "20px",
-                  width: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                {cartCount}
-              </span>
-            )}
-          </Link>
+        <div className="flex items-center gap-6 flex-shrink-0">
+      <Link
+  href="/cart"
+  className="relative group"
+>
+  <div className="bg-blue-950 hover:bg-blue-900 w-[180px] h-[65px] rounded-2xl flex items-center justify-center gap-4 shadow-xl transition-all duration-300 hover:scale-105">
+    
+    <ShoppingCart
+      size={30}
+      className="text-white group-hover:scale-110 transition"
+    />
 
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: "9999px",
-              padding: "8px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-            }}
-          >
-            <User size={20} style={{ color: "#1d4ed8" }} />
+    <span className="text-white font-bold text-lg tracking-wide">
+      CART
+    </span>
+  </div>
+
+  {cartCount > 0 && (
+    <span className="absolute -top-3 -right-3 bg-red-500 text-white text-sm font-bold rounded-full h-7 w-7 flex items-center justify-center shadow-lg">
+      {cartCount}
+    </span>
+  )}
+</Link>
+          <div className="bg-white rounded-full p-4 flex items-center justify-center shadow-lg ml-5">
+            <User size={50} className="text-blue-700" />
           </div>
         </div>
       </div>

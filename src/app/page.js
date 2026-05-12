@@ -22,17 +22,9 @@ function HomePageContent() {
     const price = searchParams.get("price");
     const search = searchParams.get("search");
 
-    if (category) {
-      setSelectedCategory(category);
-    }
-
-    if (price) {
-      setMaxPrice(Number(price));
-    }
-
-    if (search) {
-      setSearchQuery(search);
-    }
+    if (category) setSelectedCategory(category);
+    if (price) setMaxPrice(Number(price));
+    if (search) setSearchQuery(search);
   }, [searchParams]);
 
   useEffect(() => {
@@ -76,7 +68,10 @@ function HomePageContent() {
         setSearchQuery={setSearchQuery}
       />
 
-      <main className="max-w-7xl mx-auto px-6 pt-12 pb-24">
+      {/* IMPORTANT SPACE BELOW NAVBAR */}
+      <div className="h-12"></div>
+
+      <main className="max-w-7xl mx-auto px-6 sm:px-8 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
             <SidebarFilters
@@ -104,7 +99,7 @@ function HomePageContent() {
 
 export default function HomePage() {
   return (
-    <Suspense fallback={<div />}>
+    <Suspense fallback={<div>Loading...</div>}>
       <HomePageContent />
     </Suspense>
   );
