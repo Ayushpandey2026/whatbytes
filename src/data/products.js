@@ -77,19 +77,7 @@ const products = [
     image:
       "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800"
   },
-  {
-    id: 7,
-    title: "Samsung Galaxy Smartphone",
-    price: 699,
-    category: "electronics",
-    brand: "Samsung",
-    rating: 4.7,
-    stock: 7,
-    description:
-      "Powerful smartphone with high-end camera, fast processor, and vivid display.",
-    image:
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800"
-  },
+ 
   {
     id: 8,
     title: "Puma Casual T-Shirt",
@@ -102,6 +90,19 @@ const products = [
       "Comfortable premium cotton t-shirt with modern athletic styling.",
     image:
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800"
+  },
+   {
+    id: 7,
+    title: "Samsung Galaxy Smartphone",
+    price: 699,
+    category: "electronics",
+    brand: "Samsung",
+    rating: 4.7,
+    stock: 7,
+    description:
+      "Powerful smartphone with high-end camera, fast processor, and vivid display.",
+    image:
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800"
   }
 ];
 

@@ -9,30 +9,76 @@ export default function Header({ searchQuery, setSearchQuery }) {
   const { cartCount } = useCart();
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-700 to-blue-900 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center gap-4 justify-between">
-        <Link href="/" className="flex items-center gap-2 text-white">
-          <Store size={30} />
-          <span className="text-2xl font-bold">Whatbytes Store</span>
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-700 to-blue-900 shadow-lg border-b border-blue-600 border-opacity-30 mb-12">
+      <div
+        className="max-w-7xl mx-auto px-8"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "16px",
+          minHeight: "72px",
+          paddingTop: "14px",
+          paddingBottom: "14px",
+        }}
+      >
+        {/* Logo */}
+        <Link
+          href="/"
+          style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}
+          className="text-white hover:opacity-90 transition"
+        >
+          <Store size={28} style={{ flexShrink: 0 }} />
+          <span style={{ fontSize: "1.25rem", fontWeight: 700, letterSpacing: "-0.3px", whiteSpace: "nowrap" }}>
+            Whatbytes Store
+          </span>
         </Link>
 
-        <SearchBar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
+        {/* Search Bar - grows in middle */}
+        <div style={{ flex: "1 1 280px", maxWidth: "480px", margin: "0 0 0 0" }}>
+          <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        </div>
 
-        <div className="flex items-center gap-5">
-          <Link href="/cart" className="relative text-white">
-            <ShoppingCart size={28} />
+        {/* Actions */}
+        <div style={{ display: "flex", alignItems: "center", gap: "20px", flexShrink: 0 }}>
+          <Link href="/cart" className="relative text-white hover:opacity-80 transition group">
+            <ShoppingCart size={26} className="group-hover:scale-110 transition" />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">
+              <span
+                style={{
+                  position: "absolute",
+                  top: "-8px",
+                  right: "-10px",
+                  background: "#ef4444",
+                  color: "#fff",
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  borderRadius: "9999px",
+                  height: "20px",
+                  width: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 {cartCount}
               </span>
             )}
           </Link>
 
-          <div className="bg-white p-2 rounded-full shadow">
-            <User className="text-blue-800" size={22} />
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "9999px",
+              padding: "8px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+            }}
+          >
+            <User size={20} style={{ color: "#1d4ed8" }} />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,7 +9,7 @@ import ProductGrid from "@/components/ProductGrid";
 import EmptyState from "@/components/EmptyState";
 import products from "@/data/products";
 
-export default function HomePage() {
+function HomePageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -76,9 +76,9 @@ export default function HomePage() {
         setSearchQuery={setSearchQuery}
       />
 
-      <main className="max-w-7xl mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          <div>
+      <main className="max-w-7xl mx-auto px-6 pt-12 pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+          <div className="lg:col-span-1">
             <SidebarFilters
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
@@ -99,5 +99,13 @@ export default function HomePage() {
 
       <Footer />
     </>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={<div />}>
+      <HomePageContent />
+    </Suspense>
   );
 }
